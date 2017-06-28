@@ -1,0 +1,5 @@
+2013-03-20:
+  - The SPOCS software produces ASCII reports for Cliques found in Orthologs and Paralogs in the reports directory specified on the command line. In addition, an ASCII report is produced for the sequences that were found in Paralogs but did not have a high enough confidence so they were rejected. These sequences are in the cliques.report.rejected file in the reports directory.
+
+2013-03-15:
+  - The SPOCS software now uses the GNU Coding Standards and autotools for configuring, building, and installing the software on Linux and MacOS platforms.

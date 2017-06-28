@@ -1,0 +1,35 @@
+The primary Authors of the SPOCS software are:
+
+   Aaron Phillips - Developer
+   Darren Curtis  - Developer
+   Lee Ann McCue  - Principle Investigator
+
+All developers are from Pacific Northwest National Laboratory,
+Richland, WA 99352
+
+Special thanks to the following people for writing software or papers
+that we based our software on:
+
+Sean Conlan, from the Genetics and Molecular Biology Branch, National
+Human Genome Research Institute, NIH, Bethesda, MD 20892. Sean worked
+with Lee Ann McCue to extend the ideas of finding orthologs and paralogs
+to work with many species and find a single maximal clique in a graph.
+
+This software extends previous proof of concept efforts represented
+in the paper:
+     Callister, S.J., et al. (2008) Comparative bacterial proteomics:
+        analysis of the core genome concept, PloS one, 3, e1542.
+
+The Ortholog and Paralog finders are based on the concepts in the paper:
+     Remm, M., Storm, C.E. and Sonnhammer, E.L. (2001) Automatic
+        clustering of orthologs and in-paralogs from pairwise species
+        comparisons, Journal of molecular biology, 314, 1041-1052.
+
+The Solver.cpp is a C++ graph solver which finds ALL cliques in a graph
+and is primarily based on an older C version of the "Maximum Clique
+Algorithm" that can be found at:
+http://www.sicmm.org/~konc/maxclique/maxcliquedyn.cc
+and the paper:
+     Janez Konc and Dusanka Janezic. An improved branch and bound
+        algorithm for the maximum clique problem. MATCH Commun. Math.
+        Comput. Chem., 2007, 58, 569-590.

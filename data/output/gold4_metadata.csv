@@ -1,0 +1,28 @@
+protein,1.5h:-26:26:r,4h:-22:22:r,8h:-11:11:r,PhoP-Inducing:0:697:a,PhoP non-inducing:0:898:a,mutant PhoP-Inducing:0:1146:a,mutant PhoP non-inducing:0:954:a
+y0870,6.986,8.736,10.73,,,,
+y1793,2.532,2.379,2.13,,,,
+y1794,2.533,2.599,2.03,,,,
+y1820,3.836,2.507,3.366,,,,
+y1821,6.705,11.81,7.931,,,,
+y1894,-12.01,-9.159,-7.82,,,,
+y1895,-6.277,-6.919,-5.329,,,,
+y1951,20.18,8.735,3.603,,,,
+y2872,-25.25,-21.45,-10.43,,,,
+y2873,-5.965,-5.258,-3.573,,,,
+y2874,-4.849,-4.389,-3.638,,,,
+y2875,-11.38,-6.025,-4.631,,,,
+y2880,19.11,17.99,9.643,,,,
+y2881,20.51,11.68,5.147,,,,
+STY1498,,,,25,0,,
+STY2802,,,,176,267,,
+STY4023,,,,89,0,,
+STM0209,,,,19,1,6,3
+STM0981,,,,286,436,504,589
+STM2299,,,,61,5,0,0
+STM2555,,,,74,159,191,264
+STM3446,,,,697,898,1146,954
+STM3763,,,,133,0,1,0
+
+# These data are provided as examples of gene and protein expression data that can be overlaid on the SPOCS output.
+# The first 14 lines of data are extracted from the Yersinia microarray gene expression data published by H.S. Fukuto  et al. 2010. Infect. Immun. vol. 78 no. 9  3700-3715. doi: 10.1128/IAI.00062-10
+# The last 9 lines of data are extracted from the Salmonella protein expression data published by R.C. Charles  et al. 2009. PLoS ONE 4(9): e6994. doi:10.1371/journal.pone.0006994
