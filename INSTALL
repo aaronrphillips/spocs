@@ -1,3 +1,5 @@
+Installation
+============
 
 This document describes the generic installation procedure for SPOCS.
 
@@ -15,112 +17,138 @@ The installation procedure:
   6. Install
 
 
-1. Prerequisites:
+Prerequisites
+-------------
 
-   a. C++ compiler
+### C++ compiler
 
-      This software has only been built and tested on Linux RHEL 5 and
-      MacOS X with g++ from gnu.org. Your version of g++ should work as
-      long as it is newer than 4.1.
+This software has only been built and tested on Linux RHEL 5 and
+MacOS X with g++ from gnu.org. Your version of g++ should work as
+long as it is newer than 4.1.
 
-      For Linux you will need the rpm/yum package gcc-c++.
-      For MacOS you will need to install Xcode and do the following:
-        - Start Xcode
-        - Go to the menu Xcode -> Preferences -> Downloads and install the
-          "Command line tools"
+For Linux you will need the rpm/yum package gcc-c++.
+For MacOS you will need to install Xcode and do the following:
+  - Start Xcode
+  - Go to the menu Xcode -> Preferences -> Downloads and install the
+    "Command line tools"
 
-   b. Boost C++ Libraries
+### Boost C++ Libraries
 
-      You will need the Boost C++ Libraries from https://www.boost.org.
-      This software has only been built and tested with versions of boost
-      newer than 1.49-0 but should work with anything newer than 1.33-0.
+You will need the Boost C++ Libraries from https://www.boost.org.
+This software has only been built and tested with versions of boost
+newer than 1.49-0 but should work with anything newer than 1.33-0.
 
-      If you don't have the Boost C++ libraries installed on your system
-      you can follow the instructions below to install the libraries.
+If you don't have the Boost C++ libraries installed on your system
+you can follow the instructions below to install the libraries.
 
-      For Linux:
-        - There is a script, support/boost_install_script.sh, that you
-          can run that will install the Boost libraries in /usr/local
-          of you can modify it to suite your needs.
+For Linux:
+  - There is a script, support/boost_install_script.sh, that you
+    can run that will install the Boost libraries in /usr/local
+    of you can modify it to suite your needs.
 
-      For MacOS:
-        - see http://www.macports.org
-        - sudo port install boost
+For MacOS:
+  - see http://www.macports.org
+  - sudo port install boost
 
-   c. NCBI Blast version 2.2.22 or newer from nih.gov
+### NCBI Blast version 2.2.22 or newer from nih.gov
 
-      For Linux:
-        - ftp://ftp.ncbi.nlm.nih.gov/blast/executables/release/2.2.22/blast-2.2.22-x64-linux.tar.gz
+For Linux:
+  - ftp://ftp.ncbi.nlm.nih.gov/blast/executables/release/2.2.22/blast-2.2.22-x64-linux.tar.gz
 
-      For MacOS:
-        - ftp://ftp.ncbi.nlm.nih.gov/blast/executables/release/2.2.22/blast-2.2.22-universal-macosx.tar.gz
+For MacOS:
+  - ftp://ftp.ncbi.nlm.nih.gov/blast/executables/release/2.2.22/blast-2.2.22-universal-macosx.tar.gz
 
-      NOTE: You must add the directory to your PATH where blastall and formatdb
-            are installed (e.g. /usr/local/bin).
-
-
-2. Download SPOCS
-
-   More than likely you have already done this to read this file or
-   you are reading it online.
-
-   a. Download the latest version of SPOCS from:
-      http://cbb.pnnl.gov/tools/spocs.html
-
-   b. Assuming the file you downloaded is called spocs-M_m_u.tar.gz
-      where M_m_u is the Major, minor, and micro version of the software.
-      tar zxf spocs-M_m_u.tar.gz
-      cd spocs-M_m_u
+NOTE: You must add the directory to your PATH where `blastall` and `formatdb`
+      are installed (e.g. `/usr/local/bin`).
 
 
-3. Configure:
+Download SPOCS
+--------------
 
-   a. You must have blastall and formatdb in your PATH.
-   b. You must have the path to where the boost headers and libraries are
-      installed
-      - e.g. For Linux: /usr/local/boost_1_53_0_static64_release_multi
-      - e.g. For MacOS: /opt/boost-1.50
+More than likely you have already done this to read this file or
+you are reading it online.
 
-   c. Type the command:
-      ./configure --with-boost=/path_to_boost
-      For Linux:
-        ./configure --with-boost=/usr/local/boost_1_53_0_static64_release_multi
-      For MacOS:
-        ./configure --with-boost=/opt/boost-1.50
+a. Download the latest version of SPOCS from:
+  http://cbb.pnnl.gov/tools/spocs.html
 
-      NOTE: If you do not supply the --prefix option, the SPOCS binary
-            will try to install itself in /usr/local/bin
+b. Assuming the file you downloaded is called spocs-M_m_u.tar.gz
+  where M_m_u is the Major, minor, and micro version of the software.
 
-   d. If everything is correct you should not get any errors. If you get
-      output that has errors, then you more than likely do not have
-      blastall in your path or do not have boost installed correctly or
-      are trying this on a different platform that has not been tested.
-      If the problem is a new platform and you get it to work, please
-      send your fix to the AUTHORS.
+```
+tar zxf spocs-M_m_u.tar.gz
+cd spocs-M_m_u
+```
 
 
-4. Build
+Configure
+---------
 
-   a. Type the command:
-      make
-      NOTE: If you have multiple cores and GNU make, you can type:
-      make -j N
-      where N is the number of cores you have.
+You must have blastall and formatdb in your PATH.
 
-   b. If everything is correct you should not get any errors. If you get
-      output that has errors, then you more than likely trying this on a
-      different platform that has not been tested. If the problem is a
-      new platform and you get it to work, please send your fix to the
-      AUTHORS.
+You must have the path to where the boost headers and libraries are
+  installed
+  - e.g. For Linux: `/usr/local/boost_1_53_0_static64_release_multi`
+  - e.g. For MacOS: `/opt/boost-1.50`
+
+type the command:
+
+```
+  ./configure --with-boost=/path_to_boost
+```
+
+For Linux:
+
+```
+    ./configure --with-boost=/usr/local/boost_1_53_0_static64_release_multi
+```
+
+For MacOS:
+
+```
+    ./configure --with-boost=/opt/boost-1.50
+```
+
+  NOTE: If you do not supply the `--prefix` option, the SPOCS binary
+        will try to install itself in `/usr/local/bin`
+
+If everything is correct you should not get any errors. If you get
+output that has errors, then you more than likely do not have
+blastall in your path or do not have boost installed correctly or
+are trying this on a different platform that has not been tested.
+If the problem is a new platform and you get it to work, please
+send your fix to the AUTHORS.
 
 
-5. Test
+Build
+-----
 
-   a. Type the command:
-      make check
+Type the command:
 
-   b. If everything is correct you should get output similar to:
+```
+make
+# NOTE: If you have multiple cores and GNU make, you can type:
+make -j <# cores available>
+```
 
+If everything is correct you should not get any errors. If you get
+output that has errors, then you more than likely trying this on a
+different platform that has not been tested. If the problem is a
+new platform and you get it to work, please send your fix to the
+AUTHORS.
+
+
+Test
+----
+
+Type the command:
+
+```
+make check
+```
+
+If everything is correct you should get output similar to:
+
+```
 Making check in src
 make[1]: Nothing to be done for `check'.
 make  check-TESTS
@@ -167,28 +195,36 @@ Please report to leeann.mccue@pnnl.gov
 make[2]: *** [check-TESTS] Error 1
 make[1]: *** [check-am] Error 2
 make: *** [check-recursive] Error 1
+```
 
-      Then you will need to set the environment variable,
-      DYLD_FALLBACK_LIBRARY_PATH to include the boost libraries.
-      For example in bash you will need to type the following:
-        export DYLD_FALLBACK_LIBRARY_PATH=/opt/boost-1.50/lib:$DYLD_FALLBACK_LIBRARY_PATH
-      and then try and run make check again.
+Then you will need to set the environment variable,
+DYLD_FALLBACK_LIBRARY_PATH to include the boost libraries.
+For example in bash you will need to type the following:
 
-   d. You can open the file, data/output/gold4_cliques/index.html, in your
-      Chrome or Firefox browser to view the data.
+```
+export DYLD_FALLBACK_LIBRARY_PATH=/opt/boost-1.50/lib:$DYLD_FALLBACK_LIBRARY_PATH
+```
+and then try and run make check again.
+
+You can open the file, data/output/gold4_cliques/index.html, in your
+Chrome or Firefox browser to view the data.
 
 
-6. Install
+Install
+-------
 
-   a. Type the command:
-      make install
+Type the command:
 
-      NOTE: This will install the spocs binary in /usr/local/bin or 
-            the directory you specified with the --prefix option when
-            you ran the ./configure command in step 3 above.
+```
+make install
+```
 
-   b. If you get output errors, they are probably because you do not have
-      permissions to install the software.
+NOTE: This will install the spocs binary in `/usr/local/bin` or 
+      the directory you specified with the `--prefix` option when
+      you ran the `./configure` command in step 3 above.
+
+If you get output errors, they are probably because you do not have
+permissions to install the software.
 
 If you make it to this point, then you have successfully installed the
 SPOCS software and are ready to start exploring your own data sets.
