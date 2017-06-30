@@ -86,7 +86,7 @@ m4_include([config/m4/ax_boost_system.m4])
 m4_include([config/m4/ax_spocs_version.m4])
 
 
-#AX_BOOST_BASE([1.33])
+AX_BOOST_BASE([1.33])
 #AX_BOOST_PROGRAM_OPTIONS
 #AX_BOOST_DATE_TIME
 #AX_BOOST_FILESYSTEM

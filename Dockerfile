@@ -3,7 +3,7 @@ FROM gcc:4.9.4
 # get prereqs
 RUN apt-get clean
 RUN apt-get update
-RUN apt-get install --fix-missing -y wget xz-utils tzdata libboost-all-dev
+RUN apt-get install --fix-missing -y autotools-dev bc libboost-all-dev tzdata wget xz-utils 
 
 # set time zone
 ENV TZ=America/Los_Angeles
@@ -18,16 +18,21 @@ ENV PATH="/home/ubuntu/blast-2.2.22/bin:${PATH}"
 
 # build SPOCS
 RUN mkdir /home/ubuntu/spocs
+RUN mkdir /home/ubuntu/spocs/lib /home/ubuntu/spocs/bin
 WORKDIR /home/ubuntu/spocs
-COPY AUTHORS COPYING ChangeLog INSTALL Makefile.am NEWS README VERSION config.h.in configure.ac rebuild_from_scratch.sh /home/ubuntu/spocs/
+COPY AUTHORS COPYING ChangeLog INSTALL Makefile.am NEWS README VERSION config.h.in configure.ac rebuild_from_scratch.sh test-spocs.sh /home/ubuntu/spocs/
 COPY conf/ conf/
 COPY config/ config/
 COPY data/ data/
-COPY lib/ lib/
 COPY src/ src/
 COPY support/ support/
 COPY test/ test/
 
-RUN ./rebuild_from_scratch.sh
+RUN autoreconf --install --force
+ENV LIBS=" -lboost_date_time -lboost_system -lboost_regex -lboost_serialization -lboost_filesystem -lboost_program_options -lpthread"
+RUN ./configure --prefix=/home/ubuntu --with-boost-lib=/usr/lib/x86_64-linux-gnu
+RUN make -j 4
 
-CMD echo "hello, world!"
+#RUN ./test-spocs.sh
+
+CMD /home/ubuntu/spocs/src/spocs -h
