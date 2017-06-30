@@ -19,14 +19,14 @@ ENV PATH="/home/ubuntu/blast-2.2.22/bin:${PATH}"
 # build SPOCS
 RUN mkdir /home/ubuntu/spocs
 WORKDIR /home/ubuntu/spocs
-COPY AUTHORS COPYING ChangeLog INSTALL Makefile.am NEWS README VERSION config.h.in configure.ac rebuild_from_scratch.sh /home/ubuntu/spocs/
-COPY conf/ conf/
 COPY config/ config/
 COPY data/ data/
 COPY lib/ lib/
-COPY src/ src/
 COPY support/ support/
 COPY test/ test/
+COPY AUTHORS COPYING ChangeLog INSTALL Makefile.am NEWS README VERSION config.h.in configure.ac rebuild_from_scratch.sh /home/ubuntu/spocs/
+COPY conf/ conf/
+COPY src/ src/
 
 RUN ./rebuild_from_scratch.sh
 
