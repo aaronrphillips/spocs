@@ -12,7 +12,7 @@ RUN dpkg-reconfigure -f noninteractive tzdata
 
 # get BLAST
 WORKDIR /home/ubuntu
-RUN wget http://ftp.ncbi.nlm.nih.gov/blast/executables/legacy/2.2.22/blast-2.2.22-x64-linux.tar.gz
+RUN wget -q http://ftp.ncbi.nlm.nih.gov/blast/executables/legacy/2.2.22/blast-2.2.22-x64-linux.tar.gz
 RUN tar xzf blast-2.2.22-x64-linux.tar.gz
 ENV PATH="/home/ubuntu/blast-2.2.22/bin:${PATH}"
 
@@ -33,7 +33,20 @@ RUN autoreconf --install --force
 ENV LIBS=" -lboost_date_time -lboost_system -lboost_regex -lboost_serialization -lboost_filesystem -lboost_program_options -lpthread"
 RUN ./configure --prefix=/home/ubuntu --with-boost=/usr/lib/x86_64-linux-gnu
 RUN make -j 4
-
+ENV PATH="/home/ubuntu/spocs/src:${PATH}"
 #RUN ./test-spocs.sh
 
-CMD /home/ubuntu/spocs/src/spocs -h
+# build spocs gui
+WORKDIR /home/ubuntu
+RUN wget -q https://nodejs.org/dist/v6.9.2/node-v6.9.2-linux-x64.tar.xz
+WORKDIR /usr/local
+RUN tar --strip-components 1 -xf /home/ubuntu/node-v6.9.2-linux-x64.tar.xz
+COPY node/ /home/ubuntu/node
+WORKDIR /home/ubuntu/node/spocs-gui
+RUN mkdir -p /data/spocs/paralogs /data/spocs/report
+run ln -s /data/spocs /home/ubuntu/node/spocs-gui/public/spocs
+RUN npm install
+
+#CMD /home/ubuntu/spocs/src/spocs -h
+EXPOSE 3000
+CMD npm start

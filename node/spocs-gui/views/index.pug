@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  form#dropzone(action="/upload", method="post", enctype="multipart/form-data")
+    input(name='fasta_files', type='file', multiple)
+    input(name='outgroup_file', type='file')
+    input(name='output_format', type='radio', value='html')
+    | HTML (+ Plain Text)
+    input(name='output_format', type='radio', value='plain')
+    | Plain Text
+    input(type="submit")
