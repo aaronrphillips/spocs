@@ -66,12 +66,24 @@ app.post('/upload', function (req, res, next) {
     fasta_files.splice(fasta_files.indexOf(outgroup_file), 1);
   }
 
-  var output_html = req.body.output_format == 'html';
+  var graph_types = req.body.graph_types;
+  graph_types = Array.isArray(graph_types) ? graph_types : [graph_types];
 
+  var output_html = req.body.output_format == 'html';
+  console.log(params);
   params = {
     fasta_files,
     outgroup_file,
-    output_html
+    output_html,
+    seq_overlap: req.body.seq_overlap,
+    seg_overlap: req.body.seg_overlap,
+    group_overlap: req.body.group_overlap,
+    outgroup_cutoff: req.body.outgroup_cutoff,
+    blast_cutoff: req.body.blast_cutoff,
+    min_clique_size: req.body.min_clique_size,
+    edge_threshold: req.body.edge_threshold,
+    graph_types,
+    scoring_matrix: req.body.scoring_matrix
   };
 
   runner.run(params, () => {
