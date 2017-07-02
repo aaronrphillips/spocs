@@ -34,7 +34,7 @@ Unfortunately, `*` wildcards are not passed correctly to the `spocs` binary. Thi
 
 ``docker run -p 3000:3000 -v `pwd`/host_dir:/data/spocs aaronrphillips/spocs /bin/bash -c 'spocs -s /data/spocs/fasta/*.fasta ...'``
 
-Citations, Disclaimers, and Acknoledgements
+Citations, Disclaimers, and Acknowledgements
 -------------------------------------------
 
 To cite this software please use the following citation:
