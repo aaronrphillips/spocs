@@ -24,7 +24,6 @@ var paralogs_dir = path.join(spocs_root, "paralogs");
 var report_dir = path.join(spocs_root, "report");
 
 function run(params, callback) {
-  console.log("running", params);
   var args = ['-s'];
   args = args.concat(params.fasta_files);
   args = args.concat(['-p', paralogs_dir, '-R', report_dir]);
@@ -45,18 +44,15 @@ function run(params, callback) {
   args = args.concat(['-T', params.graph_types.join("")]);
   args = args.concat(['-m', params.scoring_matrix]);
 
-  console.log("spocs " + args.join(" "));
 
   exec('spocs', args, {}, (err, stdout, stderr) => {
     if (err) {
       console.error("ERROR: " + err);
       throw err;
     }
-    console.log("Spocs has finished");
     callback();
   });
 
-  console.log("done with run (waiting for exec)");
 }
 
 module.exports = { run };

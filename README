@@ -10,6 +10,10 @@ To run spocs via the web interface, launch the container as follows:
 
 Then open your browser to `localhost:3000` to view the web interface. After selecting input data and configuring parameters, click Submit to run the SPOCS job in the container. When finished, you will either be redirected to the HTML output, or the text report file will be downloaded (depending on the option selected)
 
+To stop the container, run the following:
+
+`docker stop $(docker ps | grep aaronrphillips | awk '{print $1}')`
+
 Running SPOCS Manually
 ----------------------
 

@@ -22,7 +22,7 @@ app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+//app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -46,7 +46,6 @@ if (! fs.existsSync(report_dir)) {
 }
 
 app.post('/upload', function (req, res, next) {
-  console.log("uploading!");
   // req.files is array of `photos` files
   // req.body will contain the text fields, if there were any
   var fasta_files = req.files.filter((f) => f.fieldname == 'fasta_files').map((f) => {
@@ -70,7 +69,6 @@ app.post('/upload', function (req, res, next) {
   graph_types = Array.isArray(graph_types) ? graph_types : [graph_types];
 
   var output_html = req.body.output_format == 'html';
-  console.log(params);
   params = {
     fasta_files,
     outgroup_file,
@@ -87,7 +85,6 @@ app.post('/upload', function (req, res, next) {
   };
 
   runner.run(params, () => {
-    console.log("Back from runner.run");
     done = true;
   });
 
@@ -103,7 +100,6 @@ app.get('/status', function(req, res, next) {
     num_combinations = (params.fasta_files.length + 1) * params.fasta_files.length;
   }
 
-  console.log({ files, sh_files, blastout_files, done, num_combinations });
   if (done && params.output_html) {
     return res.redirect("/spocs/report/index.html");
   } else {
