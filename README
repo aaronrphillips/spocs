@@ -12,7 +12,7 @@ Then open your browser to `localhost:3000` to view the web interface. After sele
 
 To stop the container, run the following:
 
-`docker stop $(docker ps | grep aaronrphillips | awk '{print $1}')`
+``docker stop `docker ps | grep aaronrphillips | awk '{print $1}'` ``
 
 Running SPOCS Manually
 ----------------------
@@ -68,6 +68,6 @@ publicly by or for the US Government, including the right to distribute
 to other US Government contractors.
 
 The newest version of this software and documentation is at:
-     http://cbb.pnnl.gov/tools/spocs.html
+     http://cbb.pnnl.gov/portal/tools/spocs.html
 
 Read the INSTALL file for installing the software on your system.
