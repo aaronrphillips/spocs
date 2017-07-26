@@ -32,7 +32,8 @@ server.on('listening', onListening);
 console.log("==============================\n");
 console.log("Open Browser to localhost:3000\n\n");
 console.log("To stop the container, run the following:\n");
-console.log("docker stop $(docker ps | grep aaronrphillips | awk '{print $1}')\n");
+console.log("docker stop $(docker ps | grep aaronrphillips | awk '{print $1}')\n\n");
+console.log("NOTE: You must restart the container before starting a new SPOCS run\n");
 console.log("==============================\n");
 
 /**

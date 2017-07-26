@@ -44,7 +44,6 @@ function run(params, callback) {
   args = args.concat(['-T', params.graph_types.join("")]);
   args = args.concat(['-m', params.scoring_matrix]);
 
-
   exec('spocs', args, {}, (err, stdout, stderr) => {
     if (err) {
       console.error("ERROR: " + err);

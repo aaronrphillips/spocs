@@ -61,7 +61,7 @@ app.post('/upload', function (req, res, next) {
   });
   
   outgroup_file = (outgroup_file && outgroup_file.length) ? outgroup_file[0] : null;
-  if (outgroup_file) {
+  if (outgroup_file && fasta_files.includes(outgroup_file)) {
     fasta_files.splice(fasta_files.indexOf(outgroup_file), 1);
   }
 
